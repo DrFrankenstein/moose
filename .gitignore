@@ -304,3 +304,4 @@ OpenCover/
 # moose entries
 build/
 CMakeSettings.json
+.vscode
