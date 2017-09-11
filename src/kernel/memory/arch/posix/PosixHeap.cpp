@@ -12,9 +12,18 @@ gsl::owner<void*> PosixHeap::allocateRaw(std::size_t size)
 }
 
 
-gsl::owner<void*> reallocate(gsl::owner<void*> ptr, std::size_t newsize)
+gsl::owner<void*> PosixHeap::reallocate(gsl::owner<void*> ptr, std::size_t newsize)
 {
 	return std::realloc(ptr, newsize);
 }
+
+
+void PosixHeap::free(gsl::owner<void*> ptr)
+{
+	std::free(ptr);
+}
+
+PosixHeap::~PosixHeap()
+{ }
 
 }}}
