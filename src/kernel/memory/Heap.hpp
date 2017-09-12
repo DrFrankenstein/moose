@@ -1,3 +1,6 @@
+#ifndef KERNEL_MEMORY_HEAP_INCLUDED
+#define KERNEL_MEMORY_HEAP_INCLUDED
+
 #include <cstdlib>
 #include <memory>
 #include <functional>
@@ -14,7 +17,7 @@ public:
 	template <typename T>
 	std::unique_ptr<T> allocate(std::size_t size)
 	{
-		auto ptr = this->allocateRaw(size);
+		gsl::owner<T*> ptr = static_cast<T*>(this->allocateRaw(size));
 		auto deleter = [this](T* ptr) { this->free(ptr); };
 		return std::unique_ptr<T>(ptr, deleter);
 	}
@@ -22,7 +25,7 @@ public:
 	template <typename T>
 	std::unique_ptr<T> reallocate(std::unique_ptr<T> ptr, std::size_t newsize)
 	{
-		auto newptr = this->reallocate(ptr.release(), newsize);
+		gsl::owner<T*> newptr = static_cast<T*>(this->reallocate(ptr.release(), newsize));
 		auto deleter = [this](T* ptr) { this->free(ptr); };
 		return std::unique_ptr<T>(newptr, deleter);
 	}
@@ -34,3 +37,6 @@ public:
 };
 
 }}}
+
+#endif
+
