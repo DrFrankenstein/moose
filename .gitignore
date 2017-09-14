@@ -303,5 +303,8 @@ OpenCover/
 
 # moose entries
 build/
+buildjs/
+buildgcc/
+buildclang/
 CMakeSettings.json
 .vscode
