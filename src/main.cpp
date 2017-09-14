@@ -1,3 +1,5 @@
+#include "kernel/Kernel.hpp"
+
 #include <iostream>
 
 using std::cout;
@@ -5,5 +7,6 @@ using std::endl;
 
 int main()
 {
-	cout << "moose is coming up..." << endl;
+	cout << "Bootloader: launching moose..." << endl;
+	Moose::Kernel::kmain();
 }

@@ -1,7 +1,8 @@
 #add_subdirectory(memory)
 
 set(kernel_SOURCES
-    Kernel.cpp
+	Kernel.cpp
+	memory/Heap.cpp
     memory/arch/posix/PosixHeap.cpp
 )
 
