@@ -3,7 +3,10 @@
 
 namespace Moose { namespace Kernel { namespace Service {
 
+class ServiceManager
+{
 
+};
 
 }}}
 
