@@ -18,22 +18,22 @@ void* operator new[](size_t size)
 	return operator new[](size, nothrow);
 }
 
-void* operator new(size_t size, const nothrow_t&)
+void* operator new(size_t size, const nothrow_t&) noexcept
 {
 	return kernelHeap.allocate(size);
 }
 
-void* operator new[](size_t size, const nothrow_t&)
+void* operator new[](size_t size, const nothrow_t&) noexcept
 {
 	return kernelHeap.allocate(size);
 }
 
-void operator delete(void* ptr)
+void operator delete(void* ptr) noexcept
 {
 	return kernelHeap.release(ptr);
 }
 
-void operator delete[](void* ptr)
+void operator delete[](void* ptr) noexcept
 {
 	return kernelHeap.release(ptr);
 }
