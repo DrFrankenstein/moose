@@ -11,9 +11,9 @@ namespace Moose { namespace Kernel { namespace Memory {
 class PosixHeap : public Heap
 {
 public:
-	virtual gsl::owner<void*> allocateRaw(std::size_t size);
+	virtual gsl::owner<void*> allocate(std::size_t size = 1);
 	virtual gsl::owner<void*> reallocate(gsl::owner<void*> ptr, std::size_t newsize);
-	virtual void free(gsl::owner<void*> ptr);
+	virtual void release(gsl::owner<void*> ptr);
 	virtual ~PosixHeap();
 };
 

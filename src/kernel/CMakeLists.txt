@@ -2,7 +2,8 @@
 
 set(kernel_SOURCES
 	Kernel.cpp
-	memory/Heap.cpp
+    memory/KernelHeap.cpp
+    memory/KernelNew.cpp
     memory/arch/posix/PosixHeap.cpp
 )
 

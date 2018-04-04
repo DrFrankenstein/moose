@@ -6,7 +6,7 @@
 
 namespace Moose { namespace Kernel { namespace Memory {
 
-gsl::owner<void*> PosixHeap::allocateRaw(std::size_t size)
+gsl::owner<void*> PosixHeap::allocate(std::size_t size)
 {
 	return std::malloc(size);
 }
@@ -18,7 +18,7 @@ gsl::owner<void*> PosixHeap::reallocate(gsl::owner<void*> ptr, std::size_t newsi
 }
 
 
-void PosixHeap::free(gsl::owner<void*> ptr)
+void PosixHeap::release(gsl::owner<void*> ptr)
 {
 	std::free(ptr);
 }
